@@ -56,4 +56,19 @@ public class ContactManager {
         }
     }
 
+    // FOR DEBUGGING
+    public void resetData(Context context) {
+        contacts.clear();
+        SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        prefs.edit().remove(CONTACT_KEY).apply();
+    }
+
+    public void populateListWithData(Context context) {
+        resetData(context);
+        contacts.add(new Contact("Alice Andersen",   "alice@example.com",   "555‑0101"));
+        contacts.add(new Contact("Bob Bengtsson",    "bob@example.com",     "555‑0102"));
+        contacts.add(new Contact("Charlie Carlsen",  "charlie@example.com", "555‑0103"));
+        save(context);
+    }
+
 }
